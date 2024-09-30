@@ -1,0 +1,16 @@
+{
+    "domen": "http://localhost:3000/",
+    "main" : "public/index.php",
+    "login" : "src/views/user/Login.php",
+    "register" : "src/views/user/Register.php",
+    "home" : "src/views/Home.php",
+    "test" : "src/views/user/Test.php",
+    "css" : "public/bootstrap/dist/css/bootstrap.min.css",
+    "js" : "public/bootstrap/dist/js/bootstrap.bundle.min.js",
+    "homeContoller" : "",
+    "learnContoller" : "",
+    "userController" : "",
+    "userModel" : "",
+    "cardModel" : "",
+    "DBManager" : ""
+}
