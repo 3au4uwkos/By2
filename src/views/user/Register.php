@@ -17,7 +17,6 @@
     $fullname = trim($_POST['login']);
     $password = trim($_POST['password']);
     $confirm_password = trim($_POST["password_repeat"]);
-    $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
     $res = DBManager::createUser($fullname,$password,$confirm_password);
 

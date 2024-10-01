@@ -14,5 +14,7 @@
     "cardModel" : "",
     "DBManager" : "database/DBManager.php",
     "regImg" : "public/images/RegImg.png",
-    "regBack" : "public/images/RegBack.png"
+    "regBack" : "public/images/RegBack.png",
+    "logBack" : "public/images/LogBack.png",
+    "logImg" : "public/images/LogImg.png"
 }

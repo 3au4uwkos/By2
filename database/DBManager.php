@@ -106,6 +106,46 @@
         return $error;
             
         }
+
+        public static function validateUser($fullname, $password)
+        {
+
+            $db = DBManager::connectToDB();
+            $error = '';
+
+            if (empty($fullname)) {
+                $error .= '<p class="error">Please enter fullname$fullname.</p>';
+            }
+        
+            // validate if password is empty
+            if (empty($password)) {
+                $error .= '<p class="error">Please enter your password.</p>';
+            }
+        
+            if (empty($error)) {
+                if($query = $db->prepare("SELECT * FROM users WHERE username = ?")) {
+                    $query->bind_param('s', $fullname);
+                    $query->execute();
+                    $result = $query->get_result();
+                    $row = $result->fetch_assoc();
+                    if ($row) {
+                        if (password_verify($password, $row['password'])) {
+                            $_SESSION["userid"] = $row['id'];
+                            $_SESSION["user"] = $row;
+                            return TRUE;
+                        } else {
+                            $error .= '<p class="error">The password is not valid.</p>';
+                        }
+                    } else {
+                        $error .= '<p class="error">No User exist with that fullname$fullname address.</p>';
+                    }
+                }
+                $query->close();
+            }
+            // Close connection
+            mysqli_close($db);
+            return $error;
+        }
     }
 
 ?>
