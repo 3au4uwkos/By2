@@ -1,5 +1,4 @@
 <?php 
-    session_start();
     require_once(".." . DIRECTORY_SEPARATOR . "config" . DIRECTORY_SEPARATOR . "LinkParser.php");
     $css = LinkParser::getLink("css");
     $js = LinkParser::getLink("js");

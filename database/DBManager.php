@@ -131,13 +131,13 @@
                     if ($row) {
                         if (password_verify($password, $row['password'])) {
                             $_SESSION["userid"] = $row['id'];
-                            $_SESSION["user"] = $row;
+                            $_SESSION["user"] = $row['username'];
                             return TRUE;
                         } else {
                             $error .= '<p class="error">The password is not valid.</p>';
                         }
                     } else {
-                        $error .= '<p class="error">No User exist with that fullname$fullname address.</p>';
+                        $error .= '<p class="error">No User exist with this login.</p>';
                     }
                 }
                 $query->close();
@@ -146,6 +146,19 @@
             mysqli_close($db);
             return $error;
         }
-    }
 
+        public static function showTests ($begin, $id)
+        {
+            $db = DBManager::connectToDB();
+            $query = 'SELECT * FROM tests 
+                        WHERE user_id IN (?, ?) LIMIT ?, ?;';
+            $result = $db->execute_query($query,[ 0, $id, $begin, $begin + 9]);
+            $ans = array();
+            foreach ($result as $row) {
+                $temp = array($row['title'], $row['discription']);
+                array_push($ans,$temp);
+            }
+            return $ans;
+        }
+    }
 ?>
