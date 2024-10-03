@@ -4,7 +4,7 @@
     "login" : "src/views/user/Login.php",
     "register" : "src/views/user/Register.php",
     "home" : "src/views/Home.php",
-    "test" : "src/views/user/Test.php",
+    "test" : "src/views/Test.php",
     "css" : "public/bootstrap/dist/css/bootstrap.min.css",
     "js" : "public/bootstrap/dist/js/bootstrap.bundle.min.js",
     "homeContoller" : "",
@@ -16,5 +16,12 @@
     "regImg" : "public/images/RegImg.png",
     "regBack" : "public/images/RegBack.png",
     "logBack" : "public/images/LogBack.png",
-    "logImg" : "public/images/LogImg.png"
+    "logImg" : "public/images/LogImg.png",
+    "logo" : "public/images/Logo.png",
+    "info" : "public/Info.php",
+    "createTest" : "src/views/TestCreator.php",
+    "manifest" : "public/images/site.webmanifest",
+    "favicon16" : "public/images/favicon-16x16.png",
+    "favicon32" : "public/images/favicon-32x32.png",
+    "faviconApple" : "public/images/apple-touch-icon.png"
 }

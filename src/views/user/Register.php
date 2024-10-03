@@ -7,6 +7,10 @@
     $regImg = LinkParser::getLink("regImg");
     $regBack = LinkParser::getLink("regBack");
     $home = LinkParser::getLink("home");
+    $favicon16 = LinkParser::getLink("favicon16");
+    $favicon32 = LinkParser::getLink("favicon32");
+    $faviconApple = LinkParser::getLink("faviconApple");
+    $manifest = LinkParser::getLink("manifest");
 
     $error_message = '';
 
@@ -34,11 +38,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="<?php echo $css ?>" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="<?php echo $js ?>" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href='<?php echo $faviconApple ?>'>
+  <link rel="icon" type="image/png" sizes="32x32" href='<?php echo $favicon32 ?>'>
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $favicon16 ?>">
+  <link rel="manifest" href="<?php echo $manifest?>">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="<?php echo $css ?>" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="<?php echo $js ?>" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body background="<?php echo $regBack?>">
 <section class="vh-100">
