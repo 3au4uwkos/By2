@@ -12,5 +12,7 @@
     "userController" : "",
     "userModel" : "",
     "cardModel" : "",
-    "DBManager" : ""
+    "DBManager" : "",
+    "regImg" : "public/images/RegImg.png",
+    "regBack" : "public/images/RegBack.png"
 }
