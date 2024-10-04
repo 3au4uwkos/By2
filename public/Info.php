@@ -1,38 +1,16 @@
 <?php 
-    require_once(".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "config" . DIRECTORY_SEPARATOR . "LinkParser.php");
-    require_once(".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "DBManager.php");
+    require_once(".." . DIRECTORY_SEPARATOR . "config" . DIRECTORY_SEPARATOR . "LinkParser.php");
     $css = LinkParser::getLink("css");
     $js = LinkParser::getLink("js");
-    $main = LinkParser::getLink("main");
-    $home = LinkParser::getLink("home");
-    $testpage = LinkParser::getLink("test");
-    $createTest = LinkParser::getLink("createTest");
-    $logo = LinkParser::getLink("logo");
     $info = LinkParser::getLink("info");
+    $logo = LinkParser::getLink("logo");
+    $login = LinkParser::getLink("login");
+    $register = LinkParser::getLInk("register");
+    $main = LinkParser::getLink("main");
     $favicon16 = LinkParser::getLink("favicon16");
     $favicon32 = LinkParser::getLink("favicon32");
     $faviconApple = LinkParser::getLink("faviconApple");
     $manifest = LinkParser::getLink("manifest");
-    $current = 0;
-    function showTests()
-    {
-      global $current, $testpage;
-      $tests = DBManager::showTests($current, $_SESSION["userid"]);
-      $current += 9;
-      foreach($tests as $test)
-      {
-        echo "  <div class='col'>" . PHP_EOL;
-        echo "    <div class='card text-dark mb-3' style='max-width: 18rem;'>" . PHP_EOL;
-        echo "    <a href='$testpage' style='text-decoration: none;' >" . PHP_EOL;
-        echo "      <div class='card-body'>" .PHP_EOL;
-        echo "        <h5 class='card-title'>" . $test[0] . "</h5>". PHP_EOL;
-        echo "        <p class='card-text'>" . $test[1] . "</p>" . PHP_EOL;
-        echo "      </div>" . PHP_EOL;
-        echo "    </a>" . PHP_EOL;
-        echo "    </div>" . PHP_EOL;
-        echo "  </div>" . PHP_EOL;
-      }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -47,35 +25,19 @@
   <title>ByRote</title>
   <link href="<?php echo $css ?>" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="<?php echo $js ?>" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <style>
-      .card {
-        border-radius: 1em;
-        text-align: center;
-        padding: 1em;
-        background-color: rgba(40, 180, 255, 0.7);
-      }
-      .card:hover {
-        background-color: rgba(255,175, 179, 0.8);
-      }
-
-      a, a:hover, a:visited, a:active {
-        color: inherit;
-      }
-      
-    </style>
 </head>
 
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container mx-auto">
-    <a class="navbar-brand" href="<?php echo $main ?>">
+  <a class="navbar-brand" href="<?php echo $main ?>">
       <img src = '<?php echo $logo ?>' alt = 'Logo' width="80">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto my-auto mb-2 mb-lg-0">
+    <ul class="navbar-nav me-auto my-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<?php echo $main ?>">Welcome</a>
         </li>
@@ -87,25 +49,30 @@
             Tests
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<?php echo $home ?>">My tests</a></li>
-            <li><a class="dropdown-item" href="<?php echo $createTest ?>">Create test</a></li>
+            <li><a class="dropdown-item" href="<?php echo $login ?>">My tests</a></li>
+            <li><a class="dropdown-item" href="<?php echo $login ?>">Create test</a></li>
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
       </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
       <ul>
-        <a type="button" class="btn btn-primary px-auto pe-auto" href="<?php echo $home?>"><?php echo $_SESSION['user']?></a>
+      <div class="btn-group me-auto mx-auto" role="group" aria-label="Basic mixed styles example">
+        <a type="button" class="btn btn-info px-auto pe-auto" href="<?php echo $login?>">Sign in</a>
+        <a type="button" class="btn btn-success px-auto pe-auto" href="<?php echo $register?>">Sing up</a>
+      </div>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container col-md-9 text-center my-5">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
-    <?php
-      showTests();
-    ?>
-  </div>
-</div>
+    <div class="container">
+        <h1>Info page</h1>
+        <p class='text-success'>There will be information about ByRote</p>
+    </div>
 </body>
 </html>
