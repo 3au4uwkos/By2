@@ -13,6 +13,7 @@
     $favicon32 = LinkParser::getLink("favicon32");
     $faviconApple = LinkParser::getLink("faviconApple");
     $manifest = LinkParser::getLink("manifest");
+    $script = LinkParser::getLink("jsscript");
    
 ?>
 
@@ -65,9 +66,29 @@
   </div>
 </nav>
 
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit']))
+    {
+      require_once(".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "DBManager.php");
+
+    echo "<h1>POST method</h1>";
+    exit();
+
+    }
+?>
+
 <div class="container col-md-9 text-center my-5">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+  <form id="keyValueForm">
+      <div id="inputContainer" class="mx-1 mx-md-4" name="form" method="post" action="">
+      </div>
+      <div class="btn-group me-auto mx-auto" role="group" aria-label="Basic mixed styles example">
+      <button type="button" id="addPair" class="btn btn-secondary mb-3">Add Another Pair</button>
+      <button type="submit" id="submit" class="btn btn-primary mb-3">Submit</button>
+      </div>
+    </form>
   </div>
+
+  <script src="<?php echo $script ?>"></script>
 </div>
 </body>
 </html>

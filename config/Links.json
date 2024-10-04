@@ -23,5 +23,6 @@
     "manifest" : "public/images/site.webmanifest",
     "favicon16" : "public/images/favicon-16x16.png",
     "favicon32" : "public/images/favicon-32x32.png",
-    "faviconApple" : "public/images/apple-touch-icon.png"
+    "faviconApple" : "public/images/apple-touch-icon.png",
+    "jsscript" : "src/controllers/JSONParser.js"
 }
