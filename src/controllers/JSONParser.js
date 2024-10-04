@@ -1,8 +1,8 @@
-// Create a new div for the new input row
+
   const newPair = document.createElement('div');
   newPair.classList.add('form-row', 'mb-3');
 
-  // Create the key input
+
   const keyInput = document.createElement('input');
   keyInput.type = 'text';
   keyInput.classList.add('form-control');
@@ -10,7 +10,6 @@
   keyInput.placeholder = 'Key';
   keyInput.required = true;
 
-  // Create the value input
   const valueInput = document.createElement('input');
   valueInput.type = 'text';
   valueInput.classList.add('form-control');
