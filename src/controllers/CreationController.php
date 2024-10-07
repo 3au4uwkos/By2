@@ -1,28 +1,25 @@
 <?php
-    header('Content-Type: application/json');
-    if ($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-      require_once(".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "DBManager.php");
+// Get the raw POST data
+$json = file_get_contents('php://input');
 
-      $json = file_get_contents('php://input');
+// Decode the JSON data into a PHP associative array
+$data = json_decode($json, true);
 
-      // Decode the JSON data into a PHP associative array
-      $data = json_decode($json, true);
+if ($data) {
+    $name = $data['name'];
+    $description = $data['description'];
+    $dependencies = $data['dependencies'];
 
-      if ($data) {
-          // Do something with the received data (e.g., store it, process it)
-          // For example, let's just return the received JSON as a response
-          echo json_encode([
-              'status' => 'success',
-              'received_data' => $data
-          ]);
-      } else {
-          echo json_encode([
-              'status' => 'error',
-              'message' => 'Invalid JSON data'
-          ]);
-      }
-    exit();
-
-    }
+    // Process the data (e.g., save it to a database)
+    // For now, let's just return a success message
+    echo json_encode([
+        'status' => 'success',
+        'message' => 'Test created successfully!'
+    ]);
+} else {
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Invalid JSON data'
+    ]);
+}
 ?>

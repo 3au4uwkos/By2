@@ -1,8 +1,9 @@
-
+document.getElementById('addDependency').addEventListener('click', function() {
+  // Create a new div for the new input row
   const newPair = document.createElement('div');
   newPair.classList.add('form-row', 'mb-3');
 
-
+  // Create the key input
   const keyInput = document.createElement('input');
   keyInput.type = 'text';
   keyInput.classList.add('form-control');
@@ -10,6 +11,7 @@
   keyInput.placeholder = 'Key';
   keyInput.required = true;
 
+  // Create the value input
   const valueInput = document.createElement('input');
   valueInput.type = 'text';
   valueInput.classList.add('form-control');
@@ -17,7 +19,7 @@
   valueInput.placeholder = 'Value';
   valueInput.required = true;
 
-
+  // Add inputs to new columns
   const keyCol = document.createElement('div');
   keyCol.classList.add('col');
   keyCol.appendChild(keyInput);
@@ -29,75 +31,56 @@
   newPair.appendChild(keyCol);
   newPair.appendChild(valueCol);
 
-
-  document.getElementById('inputContainer').appendChild(newPair);
-
-
-
-
-document.getElementById('addPair').addEventListener('click', function() {
-
-  const newPair = document.createElement('div');
-  newPair.classList.add('form-row', 'mb-3');
-
-  const keyInput = document.createElement('input');
-  keyInput.type = 'text';
-  keyInput.classList.add('form-control');
-  keyInput.name = 'key[]';
-  keyInput.placeholder = 'Key';
-  keyInput.required = true;
-
-
-  const valueInput = document.createElement('input');
-  valueInput.type = 'text';
-  valueInput.classList.add('form-control');
-  valueInput.name = 'value[]';
-  valueInput.placeholder = 'Value';
-  valueInput.required = true;
-
-  const keyCol = document.createElement('div');
-  keyCol.classList.add('col');
-  keyCol.appendChild(keyInput);
-
-  const valueCol = document.createElement('div');
-  valueCol.classList.add('col');
-  valueCol.appendChild(valueInput);
-
-  newPair.appendChild(keyCol);
-  newPair.appendChild(valueCol);
-
-  document.getElementById('inputContainer').appendChild(newPair);
+  // Append the new pair to the dependency container
+  document.getElementById('dependencyContainer').appendChild(newPair);
 });
 
-document.getElementById('keyValueForm').addEventListener('submit', function(event) {
-  event.preventDefault();
+document.getElementById('testForm').addEventListener('submit', function(event) {
+  event.preventDefault();  // Prevent the form from submitting normally
 
+  // Collect test name and description
+  const testName = document.getElementById('testName').value;
+  const testDescription = document.getElementById('testDescription').value;
+
+  // Collect all keys and values
   const keys = document.querySelectorAll('input[name="key[]"]');
   const values = document.querySelectorAll('input[name="value[]"]');
 
-  const jsonObj = {};
+  // Create an array to store key-value pairs in the format: [key1, value1, key2, value2, ...]
+  const dependencies = [];
   for (let i = 0; i < keys.length; i++) {
-    jsonObj[keys[i].value] = values[i].value;
+    dependencies.push(keys[i].value, values[i].value);
   }
 
-  const output = JSON.stringify(jsonObj);
+  // Create the final JSON object
+  const jsonObj = {
+    name: testName,
+    description: testDescription,
+    dependencies: dependencies
+  };
 
-  fetch("TestCreator.php",{
-    method: "POST",
+  // Send the JSON object to CreationController.php via POST method
+  fetch('../controllers/CreationController.php', {
+    method: 'POST',
     headers: {
-      'Content-Type' : 'application/json',
+      'Content-Type': 'application/json',
     },
-    body: output
+    body: JSON.stringify(jsonObj) // Convert JSON object to a string
   })
-  .then(response => response.json())
+  .then(response => response.json()) // Parse the JSON response
   .then(data => {
-    if (data.status === 'error') {
-        // Display error message to user
-        document.getElementById('error-message').innerText = data.message;
+    // Display success or error message based on response
+    const responseMessage = document.getElementById('responseMessage');
+    if (data.status === 'success') {
+      responseMessage.innerHTML = '<div class="alert alert-success">Test created successfully!</div>';
     } else {
-        // Handle success (e.g., redirect to another page)
+      responseMessage.innerHTML = '<div class="alert alert-danger">Error: ' + data.message + '</div>';
     }
-})
-.catch(error => {
+  })
+  .catch(error => {
     console.error('Error:', error);
-})})
+    // Display error message
+    document.getElementById('responseMessage').innerHTML = '<div class="alert alert-danger">An error occurred while creating the test.</div>';
+  });
+});
+

@@ -68,14 +68,30 @@
 
 
 
-<div class="container col-md-9 text-center my-5">
-  <div id="error-message" style="color:red;"></div>
-  <form id="keyValueForm">
-      <div id="inputContainer" class="mx-1 mx-md-4" name="form" method="post" action="">
+  <div class="container col-md-9 text-center my-5">
+    <form id="testForm">
+      <div id="responseMessage" class="mt-3"></div>
+      <div class="form-group">
+        <label for="testName">Test Name</label>
+        <input type="text" class="form-control" id="testName" placeholder="Enter test name" required>
+      </div>
+      <div class="form-group">
+        <label for="testDescription">Description</label>
+        <textarea class="form-control" id="testDescription" rows="3" placeholder="Enter test description" required></textarea>
+      </div>
+      <div id="dependencyContainer">
+        <div class="form-row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" name="key[]" placeholder="Key" required>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" name="value[]" placeholder="Value" required>
+          </div>
+        </div>
       </div>
       <div class="btn-group me-auto mx-auto" role="group" aria-label="Basic mixed styles example">
-      <button type="button" id="addPair" class="btn btn-secondary mb-3">Add Another Pair</button>
-      <button type="submit" id="submit" class="btn btn-primary mb-3">Submit</button>
+        <button type="button" id="addDependency" class="btn btn-secondary mb-3">Add Another Pair</button>
+        <button type="submit" id="submit" class="btn btn-primary mb-3">Submit</button>
       </div>
     </form>
   </div>
