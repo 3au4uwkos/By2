@@ -82,8 +82,22 @@ document.getElementById('keyValueForm').addEventListener('submit', function(even
 
   const output = JSON.stringify(jsonObj);
 
-  fetch(alert("//localhost:3000/src/views/TestCreator.php"),{
+  fetch("TestCreator.php",{
     method: "POST",
-    body : output
+    headers: {
+      'Content-Type' : 'application/json',
+    },
+    body: output
   })
-});
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'error') {
+        // Display error message to user
+        document.getElementById('error-message').innerText = data.message;
+    } else {
+        // Handle success (e.g., redirect to another page)
+    }
+})
+.catch(error => {
+    console.error('Error:', error);
+})})

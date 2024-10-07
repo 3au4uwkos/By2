@@ -66,18 +66,10 @@
   </div>
 </nav>
 
-<?php 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit']))
-    {
-      require_once(".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "database" . DIRECTORY_SEPARATOR . "DBManager.php");
 
-    echo "<h1>POST method</h1>";
-    exit();
-
-    }
-?>
 
 <div class="container col-md-9 text-center my-5">
+  <div id="error-message" style="color:red;"></div>
   <form id="keyValueForm">
       <div id="inputContainer" class="mx-1 mx-md-4" name="form" method="post" action="">
       </div>
