@@ -202,6 +202,7 @@
                 return FALSE;
             }
             $ans = json_decode($result->fetch_row()[3]);
+            
             return $ans;
         }
     }

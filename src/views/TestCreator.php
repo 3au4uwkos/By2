@@ -4,6 +4,7 @@
     $css = LinkParser::getLink("css");
     $js = LinkParser::getLink("js");
     $main = LinkParser::getLink("main");
+    $back = LinkParser::getLink("background");
     $home = LinkParser::getLink("home");
     $testpage = LinkParser::getLink("test");
     $createTest = LinkParser::getLink("createTest");
@@ -31,7 +32,7 @@
   <script src="<?php echo $js ?>" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body background="<?php echo $back;?>">
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container mx-auto">
     <a class="navbar-brand" href="<?php echo $main ?>">

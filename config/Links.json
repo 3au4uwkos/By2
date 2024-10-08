@@ -9,11 +9,6 @@
     "css" : "public/bootstrap/dist/css/bootstrap.min.css",
     "js" : "public/bootstrap/dist/js/bootstrap.bundle.min.js",
     "testLogic" : "src/controllers/TestLogic.js",
-    "homeContoller" : "",
-    "learnContoller" : "",
-    "userController" : "",
-    "userModel" : "",
-    "cardModel" : "",
     "showMore" : "src/controllers/ShowMore.js",
     "DBManager" : "database/DBManager.php",
     "regImg" : "public/images/RegImg.png",
@@ -27,5 +22,6 @@
     "favicon16" : "public/images/favicon-16x16.png",
     "favicon32" : "public/images/favicon-32x32.png",
     "faviconApple" : "public/images/apple-touch-icon.png",
-    "addPair" : "src/controllers/AddPair.js"
+    "addPair" : "src/controllers/AddPair.js",
+    "background" : "public/images/Background.png"
 }
