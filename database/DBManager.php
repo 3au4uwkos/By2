@@ -142,7 +142,6 @@
                 }
                 $query->close();
             }
-            // Close connection
             mysqli_close($db);
             return $error;
         }
@@ -156,7 +155,7 @@
             $result = $db->execute_query($query,[ 0, $id, $begin, $begin + 9]);
             $ans = array();
             foreach ($result as $row) {
-                $temp = array($row['title'], $row['discription']);
+                $temp = array($row['title'], $row['discription'], $row['id']);
                 array_push($ans,$temp);
             }
             return $ans;
@@ -190,6 +189,20 @@
         $query->close();
         $db->close();
         return $error;
+        }
+
+    public static function getTest ($id)
+        {
+            $db = DBManager::connectToDB();
+            $query = 'SELECT * FROM tests 
+                        WHERE id = ?';
+            $result = $db->execute_query($query, [$id]);
+            if($result->num_rows == 0)
+            {
+                return FALSE;
+            }
+            $ans = json_decode($result->fetch_row()[3]);
+            return $ans;
         }
     }
 ?>

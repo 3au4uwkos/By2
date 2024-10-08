@@ -8,6 +8,7 @@
     "test" : "src/views/Test.php",
     "css" : "public/bootstrap/dist/css/bootstrap.min.css",
     "js" : "public/bootstrap/dist/js/bootstrap.bundle.min.js",
+    "testLogic" : "src/controllers/TestLogic.js",
     "homeContoller" : "",
     "learnContoller" : "",
     "userController" : "",

@@ -13,7 +13,7 @@
       {
         echo "  <div class='col'>" . PHP_EOL;
         echo "    <div class='card text-dark mb-3' style='max-width: 18rem;'>" . PHP_EOL;
-        echo "    <a href='$testpage' style='text-decoration: none;' >" . PHP_EOL;
+        echo "    <a href='$testpage?id=" . $test[2] . "' style='text-decoration: none;' >" . PHP_EOL;
         echo "      <div class='card-body'>" .PHP_EOL;
         echo "        <h5 class='card-title'>" . $test[0] . "</h5>". PHP_EOL;
         echo "        <p class='card-text'>" . $test[1] . "</p>" . PHP_EOL;

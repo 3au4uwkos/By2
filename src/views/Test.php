@@ -13,7 +13,39 @@
     $favicon32 = LinkParser::getLink("favicon32");
     $faviconApple = LinkParser::getLink("faviconApple");
     $manifest = LinkParser::getLink("manifest");
+    $script = LinkParser::getLink("addPair");
     
+    $test_id = $_GET['id'] ?? null;
+
+    if (!$test_id) {
+      die("Test ID not provided.");
+    }
+
+    $test = DBManager::getTest($test_id);
+    if($test === FALSE){
+      die("There is no test with such id");
+    }
+
+    $questions = array();
+    $answers = array();
+    $keys = array();
+
+    $key = '';
+    $value = '';
+
+    for($i = 0; $i < count($test); $i++){
+      if($i % 2 == 0){
+        $key = $test[$i];
+        array_push($keys, $key);
+      }
+      else{
+        $value = $test[$i];
+        $questions[$key] = $value;
+        array_push($answers, $value);
+      }
+    }
+
+    shuffle($keys);
 ?>
 
 <!DOCTYPE html>
@@ -22,15 +54,43 @@
   <link rel="apple-touch-icon" sizes="180x180" href='<?php echo $faviconApple ?>'>
   <link rel="icon" type="image/png" sizes="32x32" href='<?php echo $favicon32 ?>'>
   <link rel="icon" type="image/png" sizes="16x16" href="<?php echo $favicon16 ?>">
+  
   <link rel="manifest" href="<?php echo $manifest?>">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ByRote</title>
   <link href="<?php echo $css ?>" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <script src="<?php echo $js ?>" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <style>
+        .question-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .answer-btn {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .next-btn {
+            margin-top: 20px;
+            display: none; /* Hides the button initially */
+        }
+
+        .correct {
+            background-color: green;
+            color: white;
+        }
+
+        .incorrect {
+            background-color: red;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
+<script src="http://localhost:3000/src/controllers/TestLogic.js"></script>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container mx-auto">
     <a class="navbar-brand" href="<?php echo $main ?>">
@@ -65,8 +125,28 @@
   </div>
 </nav>
 
-<div class="container col-md-9 text-center my-5">
-  <h1> There will be your test </h1>
-</div>
+  <div class="container col-md-9 text-center my-5" id='1'>
+    <div class="row justify-content-center question-container">
+      <div class="col-12">
+          <h3 id="question" class="mb-4">Question text will appear here</h3>
+      </div>
+      <div class="col-md-6">
+          <button id="answer1" class="btn btn-primary answer-btn"></button>
+      </div>
+      <div class="col-md-6">
+          <button id="answer2" class="btn btn-primary answer-btn"></button>
+      </div>
+      <div class="col-md-6">
+          <button id="answer3" class="btn btn-primary answer-btn"></button>
+      </div>
+      <div class="col-md-6">
+          <button id="answer4" class="btn btn-primary answer-btn"></button>
+      </div>
+      <div class="col-12 text-center">
+          <button id="next-btn" class="btn btn-success next-btn">Go Further</button>
+      </div>
+    </div>
+    
+  </div>
 </body>
 </html>

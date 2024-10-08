@@ -1,0 +1,1 @@
+document.write("<p>The text from JavaScript</p>");
