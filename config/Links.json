@@ -1,5 +1,6 @@
 {
     "domen": "http://localhost:3000/",
+    
     "main" : "public/index.php",
     "login" : "src/views/user/Login.php",
     "register" : "src/views/user/Register.php",
@@ -12,6 +13,7 @@
     "userController" : "",
     "userModel" : "",
     "cardModel" : "",
+    "showMore" : "src/controllers/ShowMore.js",
     "DBManager" : "database/DBManager.php",
     "regImg" : "public/images/RegImg.png",
     "regBack" : "public/images/RegBack.png",

@@ -13,26 +13,9 @@
     $favicon32 = LinkParser::getLink("favicon32");
     $faviconApple = LinkParser::getLink("faviconApple");
     $manifest = LinkParser::getLink("manifest");
+    $script = LinkParser::getLink("showMore");
     $current = 0;
-    function showTests()
-    {
-      global $current, $testpage;
-      $tests = DBManager::showTests($current, $_SESSION["userid"]);
-      $current += 9;
-      foreach($tests as $test)
-      {
-        echo "  <div class='col'>" . PHP_EOL;
-        echo "    <div class='card text-dark mb-3' style='max-width: 18rem;'>" . PHP_EOL;
-        echo "    <a href='$testpage' style='text-decoration: none;' >" . PHP_EOL;
-        echo "      <div class='card-body'>" .PHP_EOL;
-        echo "        <h5 class='card-title'>" . $test[0] . "</h5>". PHP_EOL;
-        echo "        <p class='card-text'>" . $test[1] . "</p>" . PHP_EOL;
-        echo "      </div>" . PHP_EOL;
-        echo "    </a>" . PHP_EOL;
-        echo "    </div>" . PHP_EOL;
-        echo "  </div>" . PHP_EOL;
-      }
-    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -101,10 +84,14 @@
 </nav>
 
 <div class="container col-md-9 text-center my-5">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
-    <?php
-      showTests();
-    ?>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5" name='tests-container' id = 'tests-container'>
+    
+  </div>
+  <div class = 'container text-center'>
+    <button type='button' class = 'btn-primary' name='show-more' id='show-more'>Show More Tests</button>
+  </div>
+  <div>
+    <script src = "<?php echo $script ?>"></script>
   </div>
 </div>
 </body>

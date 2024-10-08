@@ -150,6 +150,7 @@
         public static function showTests ($begin, $id)
         {
             $db = DBManager::connectToDB();
+            $begin *= 9;
             $query = 'SELECT * FROM tests 
                         WHERE user_id IN (?, ?) LIMIT ?, ?;';
             $result = $db->execute_query($query,[ 0, $id, $begin, $begin + 9]);
