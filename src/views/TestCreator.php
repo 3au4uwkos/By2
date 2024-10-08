@@ -13,7 +13,7 @@
     $favicon32 = LinkParser::getLink("favicon32");
     $faviconApple = LinkParser::getLink("faviconApple");
     $manifest = LinkParser::getLink("manifest");
-    $script = LinkParser::getLink("jsscript");
+    $script = LinkParser::getLink("addPair");
    
 ?>
 
@@ -49,7 +49,7 @@
           <a class="nav-link" href="<?php echo $info ?>">About application</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="<?php echo $home ?>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Tests
           </a>
           <ul class="dropdown-menu">
@@ -72,13 +72,13 @@
     <form id="testForm">
       <div id="responseMessage" class="mt-3"></div>
       <div class="form-group">
-        <label for="testName">Test Name</label>
         <input type="text" class="form-control" id="testName" placeholder="Enter test name" required>
       </div>
+      <br></br>
       <div class="form-group">
-        <label for="testDescription">Description</label>
         <textarea class="form-control" id="testDescription" rows="3" placeholder="Enter test description" required></textarea>
       </div>
+      <br></br>
       <div id="dependencyContainer">
         <div class="form-row mb-3">
           <div class="col">

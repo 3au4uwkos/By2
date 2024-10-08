@@ -160,5 +160,35 @@
             }
             return $ans;
         }
+
+
+        public static function createTest($name, $description, $dependencies, $userid)
+        {
+            $error = '';
+            $db = DBManager::connectToDB();
+            if($query = $db->prepare("SELECT title, user_id FROM tests WHERE title = ? AND user_id = ?")) {
+            $query->bind_param('ss', $name, $userid);
+            $query->execute();
+            $query->store_result();
+            if ($query->num_rows > 0) {
+                $error .= 'Test with this name is already exist. ';
+            } else {
+                if (empty($error)) {
+                    $insertQuery = $db->prepare("INSERT INTO tests (title, discription, content, user_id) VALUES (?, ?, ?, ?);");
+                    $insertQuery->bind_param("ssss", $name, $description, $dependencies, $userid);
+                    $result = $insertQuery->execute();
+                    if ($result) {
+                        return TRUE;
+                    } else {
+                        $error .= 'Something went wrong!';
+                    }
+                    $insertQuery->close();
+                }
+            }
+        }
+        $query->close();
+        $db->close();
+        return $error;
+        }
     }
 ?>
