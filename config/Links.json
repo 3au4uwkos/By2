@@ -1,5 +1,5 @@
 {
-    "domen": "http://localhost:3000/",
+    "domen": "",
     
     "main" : "public/index.php",
     "login" : "src/views/user/Login.php",
