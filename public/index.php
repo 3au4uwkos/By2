@@ -1,5 +1,6 @@
 <?php 
     require_once(".." . DIRECTORY_SEPARATOR . "config" . DIRECTORY_SEPARATOR . "LinkParser.php");
+    session_destroy();
     $css = LinkParser::getLink("css");
     $js = LinkParser::getLink("js");
     $login = LinkParser::getLink("login");
@@ -29,7 +30,7 @@
 </head>
 
 <body >
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-light navbar-expand-lg"style="background-color: #feb4d8;">
   <div class="container mx-auto">
   <a class="navbar-brand" href="<?php echo $main ?>">
       <img src = '<?php echo $logo ?>' alt = 'Logo' width="80">

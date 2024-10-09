@@ -11,6 +11,9 @@
     $favicon32 = LinkParser::getLink("favicon32");
     $faviconApple = LinkParser::getLink("faviconApple");
     $manifest = LinkParser::getLink("manifest");
+    
+     session_destroy();
+      session_start();
 
     $error_message = '';
 

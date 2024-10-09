@@ -1,5 +1,7 @@
 <?php 
     require_once(".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "config" . DIRECTORY_SEPARATOR . "LinkParser.php");
+    session_destroy();
+    session_start();
     $css = LinkParser::getLink("css");
     $js = LinkParser::getLink("js");
     $main = LinkParser::getLink("main");

@@ -28,7 +28,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-light navbar-expand-lg"style="background-color: #feb4d8;">
   <div class="container mx-auto">
   <a class="navbar-brand" href="<?php echo $main ?>">
       <img src = '<?php echo $logo ?>' alt = 'Logo' width="80">
@@ -54,12 +54,6 @@
             <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
-      </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
       <ul>
       <div class="btn-group me-auto mx-auto" role="group" aria-label="Basic mixed styles example">
         <a type="button" class="btn btn-info px-auto pe-auto" href="<?php echo $login?>">Sign in</a>
