@@ -11,6 +11,7 @@
     $faviconApple = LinkParser::getLink("faviconApple");
     $manifest = LinkParser::getLink("manifest");
     $logo = LinkParser::getLink("logo");
+    $back = LinkParser::getLink("background");
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@
   <link rel="manifest" href="<?php echo $manifest?>">
 </head>
 
-<body>
+<body >
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container mx-auto">
   <a class="navbar-brand" href="<?php echo $main ?>">
@@ -64,7 +65,7 @@
   </div>
 </nav>
 
-    <div class="container">
+    <div class="container" background="<?php echo $back;?>">
         <h1>Welcome to ByRote</h1>
         <p>Start learning by rote now! Log in or sign up to get started.</p>
     </div>
