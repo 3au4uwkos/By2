@@ -2,10 +2,10 @@
 
     class DBManager{
 
-        private static string $host = "localhost";
-        private static string  $database = "ByRote";
-        private static string $username = "root";
-        private static string $password = "zzzz22000066";
+        private static string $host = "";
+        private static string  $database = "";
+        private static string $username = "";
+        private static string $password = "";
 
         private static function connectToDB(){
 
